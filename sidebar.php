@@ -13,12 +13,12 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Muhammed Tayyib Şahin</a>
+          <a href="#" class="d-block"><?php  echo($_SESSION['admins']['admins_name_surname']);?></a>
         </div>
       </div>
-
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
+<!-- SidebarSearch Form -->
+      
+      <!-- <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
           <div class="input-group-append">
@@ -27,7 +27,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">

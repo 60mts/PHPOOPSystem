@@ -40,7 +40,7 @@ Class  Crud {
 
             $_SESSION['admins']=[
                 "admins_username"=> $admins_username,
-                "admins_username_surname"=>$row['admins_username_surname'],
+                "admins_name_surname"=>$row['admins_name_surname'],
                 "admins_file"=>$row['admins_file'],
                 "admins_id"=>$row['admins_id']
             ];
