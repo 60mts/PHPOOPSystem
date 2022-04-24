@@ -29,9 +29,9 @@ Class  Crud {
         }
 
 }
-    public function adminLogin($admins_username,$admins_pass){
+    public function adminsLogin($admins_username,$admins_pass){
     try{
-        $stmt=$this->db->prepare("SELECT * FROM admins WHERE username=? and admins_pass=?");
+        $stmt=$this->db->prepare("SELECT * FROM admins WHERE admins_username=? and admins_pass=?");
         $stmt->execute([$admins_username,md5($admins_pass)]);
 
         if ($stmt->rowCount()==1) {

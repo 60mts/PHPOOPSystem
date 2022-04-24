@@ -28,20 +28,27 @@ $db=new Crud();
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <!-- <div class="alert alert-danger">
-        YANLIŞ YADA EKSİK BİLGİ GİRDİNİZ! KONTROL EDİNİZ
-      </div> -->
+      
       <?php 
       
       if (isset($_POST['admins_login'])) {
-       
+      $sonuc=$db->adminsLogin(htmlspecialchars($_POST['admins_username']),htmlspecialchars($_POST["admins_pass"]));
+       if ($sonuc['status']) {
+        
+        header("Location:index.php");
+
+       }else{?>
+        <div class="alert alert-danger">
+        YANLIŞ YADA EKSİK BİLGİ GİRDİNİZ! KONTROL EDİNİZ
+      </div>
+
+       <?php }
       }
-      
       ?>
 
-      <form action="index3.html" method="post">
+      <form action="" method="post">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="text" name="admins_username" class="form-control" placeholder="userName">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -49,7 +56,7 @@ $db=new Crud();
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" name="admins_pass" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
