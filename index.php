@@ -1,6 +1,4 @@
-
 <?php include'header.php'; ?>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -97,5 +95,5 @@
     </div>
   </aside>
   <!-- /.control-sidebar -->
-
+<?php require_once 'sidebar.php' ?>
 <?php include 'footer.php'; ?>
