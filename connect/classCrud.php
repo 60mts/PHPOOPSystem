@@ -1,5 +1,5 @@
 <?php
-    session_start();
+
     require_once 'dbconfig.php';
 
 Class  Crud {
@@ -44,6 +44,21 @@ Class  Crud {
                 "admins_file"=>$row['admins_file'],
                 "admins_id"=>$row['admins_id']
             ];
+
+            if (!empty($remember_me)) {
+
+                $admins=[
+                    "admins_username"=> $admins_username,
+
+                    "admins_pass"=> openssl_encrypt($admins_pass,"AES-128-ECB", "admins_coz")
+
+                ];
+                setcookie("adminsLogin",json_encode($admins),strtotime("+30 day"),"/");
+            }
+            else{
+                setcookie("adminsLogin",json_encode($admins),strtotime("+30 day"),"/");
+            }
+
             return ['status'=> true];
             
         }

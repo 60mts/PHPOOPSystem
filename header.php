@@ -1,7 +1,7 @@
 <?php 
 
 session_start();
-
+require_once 'setconfig.php';
 ?>
 
 <!DOCTYPE html>
@@ -159,6 +159,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </a>
       </li>
     </ul>
+  <a href="logout.php">  <li class="breadcrumb-item active">  Çıkış Yap</a></li>
   </nav>
   <!-- /.navbar -->
   

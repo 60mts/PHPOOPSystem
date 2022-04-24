@@ -1,6 +1,14 @@
 <?php 
+session_start();
+if (isset($_SESSION['admins'])) {
+  header('Location:index.php');
+  exit;
+
+}
 require_once 'connect/classCrud.php';
+
 $db=new Crud();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +74,7 @@ $db=new Crud();
         <div class="row">
           <div class="col-8">
             <div class="icheck-primary">
-              <input type="checkbox" id="remember">
+              <input type="checkbox" id="remember" name="remember_me">
               <label for="remember">
                 Remember Me
               </label>
