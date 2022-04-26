@@ -1,7 +1,9 @@
 <?php 
 
 session_start();
+
 require_once 'setconfig.php';
+
 ?>
 
 <!DOCTYPE html>
