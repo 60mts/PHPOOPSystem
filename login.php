@@ -37,14 +37,21 @@ $db=new Crud();
       <p class="login-box-msg">Sign in to start your session</p>
       
       <?php 
+
      if(isset($_COOKIE['adminsLogin'])){
+
       $login=json_decode($_COOKIE['adminsLogin']);
 
      }
+
      echo "<pre>";
+
       print_r(json_decode($_COOKIE['adminsLogin']));
+
       echo "</pre>";
+
       ?>
+
        <?php 
       
       if (isset($_POST['admins_login'])) {
@@ -55,12 +62,16 @@ $db=new Crud();
         header("Location:index.php");
 
        }else{?>
+
         <div class="alert alert-danger">
+
         YANLIŞ YADA EKSİK BİLGİ GİRDİNİZ! KONTROL EDİNİZ
+
       </div>
 
        <?php }
       }
+
       ?>
 
       <form action="" method="post">
@@ -123,8 +134,12 @@ $db=new Crud();
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
+
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
+
 <script src="dist/js/adminlte.min.js"></script>
+
 </body>
+
 </html>
