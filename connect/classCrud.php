@@ -95,6 +95,10 @@ class  Crud
 
             }
 
+        }
+        function AdminsAdd($admins_username,$admins_pass,$admins_name_surname,$admins_file){
 
+
+            
         }
 }
