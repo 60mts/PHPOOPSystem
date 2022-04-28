@@ -8,11 +8,12 @@ if (!isset($_SESSION['admins']) && isset($_COOKIE['adminsLogin'])) {
 
     $adminsLogin=json_decode($_COOKIE['adminsLogin']);
 
-    $sonuc=$db->adminsLogin($adminsLogin->admins_username,openssl_decrypt($adminsLogin->admins_pass,"AES-128-ECB","admins-coz"),true);
+    $sonuc=$db->adminsLogin($adminsLogin->admins_username,$adminsLogin->admins_pass,true);
 
     if ($sonuc['status']) {
          
         header("Location:index.php");
+        exit;
     }
 }
     else {

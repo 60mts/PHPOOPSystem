@@ -22,7 +22,6 @@ class  Crud
 
             $this->db = new PDO('mysql:host=' . $this->dbhost . '; dbname=' . $this->dbname . ';charset=utf8', $this->dbuser, $this->dbpass);
 
-            echo "bağlantı başarılı";
         } catch (Exception $e) {
 
             die("Bağlantı başarısız:" . $e->getMessage());
@@ -43,8 +42,11 @@ class  Crud
             }
 
             if ($stmt->rowCount() == 1) {
-
-                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                                // if ($row['admins_status']==0) {
+                                // return ['status'=> false];
+                                // exit;
+                                // }
 
                 $_SESSION['admins'] = [
                     "admins_username" => $admins_username,
@@ -79,4 +81,20 @@ class  Crud
             return ['status' => false, 'error' => $e->getMessage()];
         }
     }
+        function Read($table){
+
+            try{
+            
+            $stmt=$this->db->prepare("SELECT * FROM $table");
+                $stmt->execute();
+                return $stmt;
+            }
+            catch(Exception $e){
+                echo $e->getMessage();
+                return false;
+
+            }
+
+
+        }
 }
