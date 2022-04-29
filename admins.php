@@ -8,27 +8,64 @@
 
    
 <div class="content-header" align="center">
+
       <h5>EKLEME MENUSU </h5>
 <hr>
+
 <div class="content">
-<form method="post">
+ 
+
+  <?php 
+
+  if(isset($_POST['admins_add'])) {
+
+   $sonuc=$db->AdminAdd($_POST['admins_name_surname'],$_POST['admins_username'],$_POST['admins_pass'],$_POST['admin_status']);
+ 
+   if ($sonuc['status']) {?>
+
+     <div class="alert alert-success">
+
+       Kayıt başarılı     
+
+       <i class="fa fa-check"></i>
+
+</div>
+
+  <?php }  else { ?> 
+
+  <div class="alert alert-danger">
+
+   Kayıt başarısız    <i class="fa fa-exclamation"></i>
+
+  </div>
+
+
+ <?php } 
+ }
+ ?>
+ 
+  
+<form method="POST">
 
 <div class="form-group">
+
   <label> Administration Added Window </label>
+
 <div class="row" >
+
   <div class="col-xs-12" style="margin-left:350px;">
     
       <input type="text" name="admins_name_surname" required="" class="form-control" placeholder="Adı ve Soyadı" style="width:300px; padding:30px;">
       <input type="text" name="admins_username" required="" class="form-control" placeholder="Kullanıcı adı" style="width:300px; padding:30px;">
       <input type="password" name="admins_pass" required="" class="form-control" placeholder="Şifre" style="width:300px; padding:30px;">
-      <select class="form-control"name="admin_status">
-        <option required=""> Lütfen Değer seçiniz !</option>
+      <select required="" class="form-control"name="admin_status">
+        <option> Lütfen Değer seçiniz !</option>
         <option value="1"> Aktif </option> 
         <option value="0"> Pasif </option> 
       </select>
       <hr>
 
-<button type="submit" class="btn btn-success" id="admins_add"><i class="fa fa-check"></i></button>
+<button type="submit" class="btn btn-success" name="admins_add"><i class="fa fa-check"></i></button>
   </div>
     </div>
     </div>

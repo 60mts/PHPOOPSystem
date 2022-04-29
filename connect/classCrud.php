@@ -49,7 +49,7 @@ class  Crud
                                 // }
 
                 $_SESSION['admins'] = [
-                    "admins_username" => $admins_username,
+                    "admins_username" =>$row['admins_username'],
                     "admins_name_surname" => $row['admins_name_surname'],
                     "admins_file" => $row['admins_file'],
                     "admins_id" => $row['admins_id']
@@ -99,9 +99,9 @@ class  Crud
         {
             try {
 
-                $stmt=$this->db->prepare("INSERT INTO admins SET $admins_name_surname,$admins_username,$admins_pass,$admin_status");
-                 $stmt->execute();
-                 return $stmt;
+                $stmt=$this->db->prepare("INSERT INTO admins SET admins_name_surname=?,admins_username=?,admins_pass=?,admin_status=?");
+                 $stmt->execute([$admins_name_surname,$admins_username,md5($admins_pass),$admin_status]);
+                 return ['status'=> true];
 
          } catch (Exception $e){
                 return ['status' =>false,'error' =>$e->getMessage()];
