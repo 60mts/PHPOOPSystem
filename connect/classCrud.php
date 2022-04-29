@@ -94,11 +94,18 @@ class  Crud
                 return false;
 
             }
-
         }
-        function AdminsAdd($admins_username,$admins_pass,$admins_name_surname,$admins_file){
+         function AdminAdd($admins_username,$admins_pass,$admins_name_surname,$admin_status) 
+        {
+            try {
 
+                $stmt=$this->db->prepare("INSERT INTO admins SET $admins_name_surname,$admins_username,$admins_pass,$admin_status");
+                 $stmt->execute();
+                 return $stmt;
 
-            
-        }
-}
+         } catch (Exception $e){
+                return ['status' =>false,'error' =>$e->getMessage()];
+           
+            }
+        
+        }}
