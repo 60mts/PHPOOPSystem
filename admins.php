@@ -61,7 +61,7 @@
       <select required="" class="form-control"name="admin_status">
         <option> Lütfen Değer seçiniz !</option>
         <option value="1"> Aktif </option> 
-        <option value="0"> Pasif </option> 
+        <option value="0"> Pasiff </option> 
       </select>
       <hr>
 
