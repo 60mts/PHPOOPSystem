@@ -34,25 +34,27 @@ $db = new Crud();
       <div class="card-body login-card-body">
         <p class="login-box-msg">Sign in to start your session</p>
         <?php
-        if (isset($_COOKIE['adminsLogin'])) {
-          $login = json_decode($_COOKIE['adminsLogin']);
-        }
-        echo "<pre>";
-        print_r(json_decode($_COOKIE['adminsLogin']));
-        echo "</pre>";
-        ?>
+if (isset($_COOKIE['adminsLogin'])) {
+  $login = json_decode($_COOKIE['adminsLogin']);
+}
+echo "<pre>";
+print_r(json_decode($_COOKIE['adminsLogin']));
+echo "</pre>";
+?>
         <?php
-        if (isset($_POST['admins_login'])) {
-          $sonuc = $db->adminsLogin(htmlspecialchars($_POST['admins_username']), htmlspecialchars($_POST["admins_pass"]), $_POST['remember_me']);
-          if ($sonuc['status']) {
-            header("Location:index.php");
-          } else { ?>
+if (isset($_POST['admins_login'])) {
+  $sonuc = $db->adminsLogin(htmlspecialchars($_POST['admins_username']), htmlspecialchars($_POST["admins_pass"]), $_POST['remember_me']);
+  if ($sonuc['status']) {
+    header("Location:index.php");
+  }
+  else { ?>
             <div class="alert alert-danger">
               YANLIŞ YADA EKSİK BİLGİ GİRDİNİZ! KONTROL EDİNİZ
             </div>
-        <?php }
-        }
-        ?>
+        <?php
+  }
+}
+?>
         <form action="" method="post">
           <div class="input-group mb-3">
             <input type="text" name="admins_username" class="form-control" placeholder="userName">

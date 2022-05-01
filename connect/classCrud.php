@@ -2,7 +2,7 @@
 
 require_once 'dbconfig.php';
 
-class  Crud
+class Crud
 {
 
     private $db;
@@ -22,40 +22,40 @@ class  Crud
 
             $this->db = new PDO('mysql:host=' . $this->dbhost . '; dbname=' . $this->dbname . ';charset=utf8', $this->dbuser, $this->dbpass);
 
-        } catch (Exception $e) {
+        }
+        catch (Exception $e) {
 
             die("Bağlantı başarısız:" . $e->getMessage());
         }
     }
-    public function adminsLogin($admins_username, $admins_pass,$remember_me)
+    public function adminsLogin($admins_username, $admins_pass, $remember_me)
     {
         try {
             $stmt = $this->db->prepare("SELECT * FROM admins WHERE admins_username=? and admins_pass=?");
-            
-            if(isset($_COOKIE['adminsLogin'])) 
-            {
-                $stmt->execute([$admins_username, md5(openssl_decrypt($admins_pass,'AES-128-ECB',"admins_coz"))]);
+
+            if (isset($_COOKIE['adminsLogin'])) {
+                $stmt->execute([$admins_username, md5(openssl_decrypt($admins_pass, 'AES-128-ECB', "admins_coz"))]);
             }
-            else{
+            else {
                 $stmt->execute([$admins_username, md5($admins_pass)]);
 
             }
 
             if ($stmt->rowCount() == 1) {
-                                $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                                // if ($row['admins_status']==0) {
-                                // return ['status'=> false];
-                                // exit;
-                                // }
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                // if ($row['admins_status']==0) {
+                // return ['status'=> false];
+                // exit;
+                // }
 
                 $_SESSION['admins'] = [
-                    "admins_username" =>$row['admins_username'],
+                    "admins_username" => $row['admins_username'],
                     "admins_name_surname" => $row['admins_name_surname'],
                     "admins_file" => $row['admins_file'],
                     "admins_id" => $row['admins_id']
                 ];
 
-                if (!empty($remember_me) AND empty($_COOKIE['adminsLogin'])) {
+                if (!empty($remember_me) and empty($_COOKIE['adminsLogin'])) {
 
                     $admins = [
 
@@ -66,46 +66,63 @@ class  Crud
 
                     setcookie("adminsLogin", json_encode($admins), strtotime("+30 day"), "/");
 
-                } else if(empty($remember_me)){
+                }
+                else if (empty($remember_me)) {
 
                     setcookie("adminsLogin", json_encode($this->admins), strtotime("-30 day"), "/");
                 }
 
                 return ['status' => true];
-            } else {
+            }
+            else {
 
                 return ['status' => false];
             }
-        } catch (Exception $e) {
+        }
+        catch (Exception $e) {
 
             return ['status' => false, 'error' => $e->getMessage()];
         }
     }
-        function Read($table){
+    function Read($table)
+    {
 
-            try{
-            
-            $stmt=$this->db->prepare("SELECT * FROM $table");
-                $stmt->execute();
-                return $stmt;
-            }
-            catch(Exception $e){
-                echo $e->getMessage();
-                return false;
+        try {
 
-            }
+            $stmt = $this->db->prepare("SELECT * FROM $table");
+            $stmt->execute();
+            return $stmt;
         }
-         function AdminAdd($admins_username,$admins_pass,$admins_name_surname,$admin_status) 
-        {
-            try {
+        catch (Exception $e) {
+            echo $e->getMessage();
+            return false;
 
-                $stmt=$this->db->prepare("INSERT INTO admins SET admins_name_surname=?,admins_username=?,admins_pass=?,admin_status=?");
-                 $stmt->execute([$admins_name_surname,$admins_username,md5($admins_pass),$admin_status]);
-                 return ['status'=> true];
+        }
+    }
+    function AdminAdd($admins_username, $admins_pass, $admins_name_surname, $admin_status)
+    {
+        try {
 
-         } catch (Exception $e){
-                return ['status' =>false,'error' =>$e->getMessage()];
-           
-            }
-        
-        }}
+            $stmt = $this->db->prepare("INSERT INTO admins SET admins_name_surname=?,admins_username=?,admins_pass=?,admin_status=?");
+            $stmt->execute([$admins_name_surname, $admins_username, md5($admins_pass), $admin_status]);
+            return ['status' => true];
+
+        }
+        catch (Exception $e) {
+            return ['status' => false, 'error' => $e->getMessage()];
+
+        }
+
+    }
+    function deletedAdmin( $admin_id, $admins_username, $admins_name_surname,$admins_pass,$admin_status)
+{
+    try {
+        $stmt = $this->db->prepare("DELETE from  admins set admin_username,admin_id,admin_name_surname,admin_status");
+        $stmt->execute([$admins_name_surname, $admins_username, md5($admins_pass), $admin_status]);
+        return ['status' => true];
+    }
+    catch (PDOException $e) {
+
+    }
+}
+}
