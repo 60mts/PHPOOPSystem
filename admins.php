@@ -4,18 +4,19 @@
 <section class="content">
 
   <?php
+
   if (isset($_GET['addMenus'])) { ?>
 
 
     <div class="content-header" align="center">
 
       <h5>EKLEME MENUSU </h5>
+
       <hr>
 
       <div class="content">
 
-
-        <?php
+    <?php
 
         if (isset($_POST['admins_add'])) {
 
@@ -36,7 +37,7 @@
             <div class="alert alert-danger">
 
               Kayıt başarısız <i class="fa fa-exclamation">
-                
+
               </i>
 
             </div>
@@ -45,7 +46,6 @@
         <?php }
         }
         ?>
-
 
         <form method="POST">
 
