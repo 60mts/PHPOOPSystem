@@ -54,8 +54,7 @@ if (isset($_POST['admins_login'])) {
         <?php
   }
 }
-?>
-        <form action="" method="post">
+?>        <form action="" method="post">
           <div class="input-group mb-3">
             <input type="text" name="admins_username" class="form-control" placeholder="userName">
             <div class="input-group-append">

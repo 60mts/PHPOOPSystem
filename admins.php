@@ -35,7 +35,9 @@
 
             <div class="alert alert-danger">
 
-              Kayıt başarısız <i class="fa fa-exclamation"></i>
+              Kayıt başarısız <i class="fa fa-exclamation">
+                
+              </i>
 
             </div>
 
