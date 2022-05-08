@@ -59,10 +59,12 @@
 
                 <input type="text" name="admins_username" required="" class="form-control" placeholder="Kullanıcı adı" style="width:300px; padding:30px;">
                 <input type="text" name="admins_name_surname" required="" class="form-control" placeholder="Adı ve Soyadı" style="width:300px; padding:30px;">
-                <input type="password" name="admins_pass" required="" class="form-control" placeholder="Şifre" style="width:300px; padding:30px;">                <select required="" class="form-control" name="admin_status">
-                  <option> Lütfen Değer seçiniz !</option>
+                <input type="password" name="admins_pass" required="" class="form-control" placeholder="Şifre" style="width:300px; padding:30px;">               
+                <select class="form-control" name="admin_status">
+                
                   <option value="1"> Aktif </option>
                   <option value="0"> Pasiff </option>
+                  
                 </select>
                 <hr>
 

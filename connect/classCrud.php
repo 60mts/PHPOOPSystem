@@ -99,12 +99,12 @@ class Crud
 
         }
     }
-    function AdminAdd($admins_username, $admins_pass, $admins_name_surname, $admin_status)
+    function AdminAdd($admins_username, $admins_name_surname,$admins_pass, $admin_status)
     {
         try {
 
-            $stmt = $this->db->prepare("INSERT INTO admins SET admins_name_surname=?,admins_username=?,admins_pass=?,admin_status=?");
-            $stmt->execute([$admins_name_surname, $admins_username, md5($admins_pass), $admin_status]);
+            $stmt = $this->db->prepare("INSERT into admins SET admins_name_surname=?,admins_username=?,admins_pass=?,admin_status=?");
+            $stmt->execute([ $admins_username,$admins_name_surname, md5($admins_pass), $admin_status]);
             return ['status' => true];
 
         }
@@ -114,7 +114,7 @@ class Crud
         }
 
     }
-    function deletedAdmin( $admin_id, $admins_username, $admins_name_surname,$admins_pass,$admin_status)
+    function deletedAdmin($admin_id, $admins_username, $admins_name_surname,$admins_pass,$admin_status)
 {
     try {
         $stmt = $this->db->prepare("DELETE from  admins set admin_username,admin_id,admin_name_surname,admin_status");
