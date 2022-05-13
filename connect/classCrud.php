@@ -89,12 +89,17 @@ class Crud
 
         try {
 
+            
             $stmt = $this->db->prepare("SELECT * FROM $table");
+            
             $stmt->execute();
+            
             return $stmt;
         }
         catch (Exception $e) {
+            
             echo $e->getMessage();
+            
             return false;
 
         }
@@ -104,11 +109,14 @@ class Crud
         try {
 
             $stmt = $this->db->prepare("INSERT into admins SET admins_name_surname=?,admins_username=?,admins_pass=?,admin_status=?");
+            
             $stmt->execute([ $admins_username,$admins_name_surname, md5($admins_pass), $admin_status]);
+            
             return ['status' => true];
 
         }
         catch (Exception $e) {
+            
             return ['status' => false, 'error' => $e->getMessage()];
 
         }
@@ -117,8 +125,11 @@ class Crud
     function deletedAdmin($admin_id, $admins_username, $admins_name_surname,$admins_pass,$admin_status)
 {
     try {
+        
         $stmt = $this->db->prepare("DELETE from  admins set admin_username,admin_id,admin_name_surname,admin_status");
+        
         $stmt->execute([$admins_name_surname, $admins_username, md5($admins_pass), $admin_status]);
+        
         return ['status' => true];
     }
     catch (PDOException $e) {
