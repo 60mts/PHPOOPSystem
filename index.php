@@ -71,9 +71,8 @@
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
-
             <div class="card card-primary card-outline">
-              <div class="card-header">
+              <div class="card-header">ssss
                 <h5 class="m-0">Featured</h5>
               </div>
               <div class="card-body">

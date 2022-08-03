@@ -10,14 +10,13 @@
 
     <div class="content-header" align="center">
 
-      <h5>EKLEME MENUSU </h5>
+      <h5> EKLEME MENUSU </h5>
 
       <hr>
 
       <div class="content">
 
     <?php
-
         if (isset($_POST['admins_add'])) {
 
           $sonuc = $db->AdminAdd($_POST['admins_name_surname'], $_POST['admins_username'], $_POST['admins_pass'], $_POST['admin_status']);
@@ -46,7 +45,6 @@
         <?php }
         }
         ?>
-
         <form method="POST">
 
           <div class="form-group">
@@ -101,7 +99,7 @@
       <tbody>
         <tr>
           <?php
-          $sql = $db->Read("admins");
+          $sql = $db->Read("admins1");
           $say = 1;
           while ($row = $sql->Fetch(PDO::FETCH_ASSOC)) { ?>
             <td> <?php echo $say++ ?></td>

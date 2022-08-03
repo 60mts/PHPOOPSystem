@@ -76,7 +76,7 @@ if (isset($_POST['admins_login'])) {
             <div class="col-8">
               <div class="icheck-primary">
                 <input type="checkbox" id="remember" name="remember_me">
-                <label for="remember">
+                <label for="remember_me">
                   Remember Me
                 </label>
               </div>
