@@ -1,3 +1,5 @@
-PHP OOP Kurallarında yazılmış bir sistem.
+ -> PHP OOP Kurallarında yazılmış bir sistem.
 
-Projeyi 3 yol'a diğer kısımlarını oradan inceleyebilirsiniz.
+      --> Projeyi 3 yol'a diğer kısımlarını oradan inceleyebilirsiniz.
+      
+      
